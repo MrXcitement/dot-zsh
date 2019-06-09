@@ -3,7 +3,11 @@
 # My personal zsh configuration
 # Mike Barker <mike@thebarkers.com>
 # June 8th, 2019
-source /usr/local/share/antigen/antigen.zsh
+if [[ -e "${HOME}/.zsh-antigen/antigen.zsh" ]]; then
+    source "${HOME}/.zsh-antigen/antigen.zsh"
+elif [[ $(uname) == "Darwin" ]]; then
+    source /usr/local/share/antigen/antigen.zsh
+fi
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
