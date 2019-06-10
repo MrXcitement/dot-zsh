@@ -1,18 +1,14 @@
+#!/bin/zsh
 
-# Disable kubecontext
-export SPACESHIP_KUBECONTEXT_SHOW='false'
+# .zshenv --- Usually run for every zsh
+# Mike Barker <mike@thebarkers.com>
+# Jine 9th, 2019
 
-path=(
-    ~/Library/Python/3.7/bin
-    ~/Library/Python/2.7/bin
-    $path
-)
+# Load all the files in the ~/.zsh/shenv directory
 
-# Pyenv setup
-if [[ $(command -v pyenv) ]]; then
-    path=(~/.pyenv/bin $path)
-    eval "$(pyenv init -)"
-    if [[ $(command -v pyenv-sh-virtualenv) ]]; then
-        eval "$(pyenv virtualenv-init -)"
-    fi
-fi
+SCRIPT_DIR=${${(%):-%x}:h}
+ZSH_DIR=${SCRIPT_DIR}/.zsh/shenv/
+
+[[ $DEBUG ]] && echo "Loading ${ZSH_DIR}"
+for f (${ZSH_DIR}/*.zsh) source $f
+
