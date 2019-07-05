@@ -16,6 +16,7 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle fasd
+antigen bundle geeknote
 antigen bundle git
 antigen bundle tmux
 antigen bundle command-not-found
