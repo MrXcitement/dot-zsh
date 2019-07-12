@@ -6,7 +6,7 @@
 
 # Download and source the antigen plugin system
 local ANTIGEN_DIR="${HOME}/.antigen"
-local ANTIGEN="${ANTIGEN_DIR}/.antigen.zsh"
+local ANTIGEN="${ANTIGEN_DIR}/antigen.zsh"
 
 if [[ ! -d "${ANTIGEN_DIR}" ]]; then
     mkdir -p "${ANTIGEN_DIR}"
