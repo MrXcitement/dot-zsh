@@ -4,8 +4,13 @@
 # Mike Barker <mike@thebarkers.com>
 # June 9th, 2019
 
-local ANTIGEN="${HOME}/antigen.zsh"
+# Download and source the antigen plugin system
+local ANTIGEN_DIR="${HOME}/.antigen"
+local ANTIGEN="${ANTIGEN_DIR}/.antigen.zsh"
 
+if [[ ! -d "${ANTIGEN_DIR}" ]]; then
+    mkdir -p "${ANTIGEN_DIR}"
+fi
 if [[ ! -e "${ANTIGEN}" ]]; then
     curl -L git.io/antigen > ${ANTIGEN}
 fi
