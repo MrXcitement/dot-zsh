@@ -6,10 +6,8 @@
 
 # Create an array of potential paths to become the new path
 newpath+=(~/bin)
-newpath+=(~/bin/flutter/bin)
 newpath+=(~/.local/bin)
-newpath+=(~/Library/Python/3.7/bin)
-newpath+=(~/Library/Python/2.7/bin)
+newpath+=(~/.dotnet/tools)
 newpath+=($path)
 
 # Compose the path from the array of proposed paths.
