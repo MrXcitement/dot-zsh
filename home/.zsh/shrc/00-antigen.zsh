@@ -25,6 +25,7 @@ antigen bundle geeknote
 antigen bundle git
 antigen bundle tmux
 antigen bundle command-not-found
+antigen bundle dotenv
 
 # Bundles from GitHub
 antigen bundle hkupty/ssh-agent
