@@ -34,7 +34,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle qianxinfeng/zsh-vscode
 
 # Load the theme.
-antigen theme denysdovhan/spaceship-prompt
+# antigen theme denysdovhan/spaceship-prompt
 
 # Tell Antigen that you're done.
 antigen apply
