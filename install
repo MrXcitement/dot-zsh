@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # install-- make symbolic links in the users home directory
 # Mike Barker <mike@thebarkers.com>
@@ -7,11 +7,13 @@
 # Backup a file/directory by renaming it with the current date and time
 backup_file() {
 	file=$1
-	file_ext=$(date +%Y%m%d%H%M)
+
+    [[ ${DEBUG} ]] && printf "backup_file:\n\tfile: %s\n" "${file}"
 
 	if [ -e "${file}" ]; then
 		if ! [ -h "${file}" ]; then
-			echo "Backing up ${file} to: ${file}.${file_ext}"
+            file_ext=$(date +%Y%m%d%H%M)
+			printf "Backup: %s\n    to: %s\n" "${file}" "${file}.${file_ext}"
 			mv "${file}" "${file}.${file_ext}"
 		fi
 	fi
@@ -19,22 +21,37 @@ backup_file() {
 
 # create a symbolic link if one does not allready exist
 link_file() {
-    local src=$1
-    local dst=$2
+    local target=$1
+    local link=$2
 
-    if ! [ -e "${dst}" ]; then
-        echo "Linking file ${dst}"
-        ln -sfnv "${src}" "${dst}"
+    link_dir=$(dirname "${link}")
+
+    [[ ${DEBUG} ]] && printf "link_file:\n\ttarget: %s\n\tlink: %s\n\tlink_dir: %s\n" "${target}" "${link}" "${link_dir}"
+
+    if ! [ -e "${link_dir}" ]; then
+        echo "Make directory: ${link_dir}"
+        mkdir -p "${link_dir}"
+    fi
+
+    if ! [ -e "${link}" ]; then
+        echo "Link: ${link}"
+        ln -sfnv "${target}" "${link}"
     fi
 }
 
 # Backup existing files and link files/dirs in the home folder into
 # the users home directory.
 DIR="$(cd "$(dirname "$0")" && pwd)"
+TARGET_ITEMS=(
+    "home/.config/*"
+    "home/.z*"
+)
 shopt -s dotglob
-for src in "${DIR}"/home/*; do
-    dst="${HOME}"/$(basename "$src")
-    backup_file "$dst"
-    link_file "$src" "$dst"
+for item in ${TARGET_ITEMS[*]}; do
+    link="${item/home/${HOME}}"
+    target="${DIR}/${item}"
+    [[ ${DEBUG} ]] && printf "item: %s\ntarget: %s\nlink: %s\n" "${item}" "${target}" "${link}"
+    backup_file "${link}"
+    link_file "$target" "$link"
 done
 shopt -u dotglob
