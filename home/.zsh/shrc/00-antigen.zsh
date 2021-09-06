@@ -24,7 +24,7 @@ antigen bundle command-not-found
 
 # Bundles from GitHub
 [[ -d ~/.ssh ]] && antigen bundle hkupty/ssh-agent
-antigen bundle qianxinfeng/zsh-vscode
+[[ $(command -v code) ]] && antigen bundle qianxinfeng/zsh-vscode
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
