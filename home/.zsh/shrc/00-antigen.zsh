@@ -24,10 +24,10 @@ antigen bundle command-not-found
 
 # Bundles from GitHub
 antigen bundle hkupty/ssh-agent
+antigen bundle qianxinfeng/zsh-vscode
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle qianxinfeng/zsh-vscode
 
 # Load the theme.
 antigen theme spaceship-prompt/spaceship-prompt
