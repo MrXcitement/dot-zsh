@@ -31,9 +31,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle qianxinfeng/zsh-vscode
 
 # Load the theme.
-if ! type "starship" > /dev/null; then
-    antigen theme denysdovhan/spaceship-prompt
-fi
+antigen theme spaceship-prompt/spaceship-prompt
 
 # Tell Antigen that you're done.
 antigen apply
