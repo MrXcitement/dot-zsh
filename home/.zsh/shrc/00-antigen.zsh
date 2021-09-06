@@ -23,7 +23,7 @@ antigen bundle tmux
 antigen bundle command-not-found
 
 # Bundles from GitHub
-antigen bundle hkupty/ssh-agent
+[[ -d ~/.ssh ]] && antigen bundle hkupty/ssh-agent
 antigen bundle qianxinfeng/zsh-vscode
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
