@@ -21,6 +21,7 @@ antigen bundle fasd
 antigen bundle git
 antigen bundle tmux
 antigen bundle command-not-found
+antigen bundle kubectl
 
 # Bundles from GitHub
 [[ -d ~/.ssh ]] && antigen bundle hkupty/ssh-agent
