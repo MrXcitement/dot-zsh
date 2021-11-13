@@ -58,6 +58,5 @@ link_glob() {
 # Backup existing files and link files/dirs in the home folder into
 # the users home directory.
 pushd ./home > /dev/null
-link_glob ".config/*" "${HOME}"
 link_glob ".z*" "${HOME}"
 popd > /dev/null
