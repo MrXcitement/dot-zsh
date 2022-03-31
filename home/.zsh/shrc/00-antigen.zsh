@@ -20,12 +20,13 @@ source "${ANTIGEN}"
 antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle command-not-found
+antigen bundle dotenv
 antigen bundle fasd
 antigen bundle geeknote
 antigen bundle git
+antigen bundle ssh-agent
 antigen bundle tmux
-antigen bundle command-not-found
-antigen bundle dotenv
 
 # Bundles from GitHub
 antigen bundle hkupty/ssh-agent
