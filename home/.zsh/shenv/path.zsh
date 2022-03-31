@@ -7,6 +7,8 @@
 # Create an array of potential paths to become the new path
 [[ -x ~/bin ]] && newpath+=(~/bin)
 [[ -x ~/.local/bin ]] && newpath+=(~/.local/bin)
+[[ -x /opt/homebrew/bin ]] && newpath+=(/opt/homebrew/bin)
+[[ -x /opt/microsoft/bin ]] && newpath+=(/opt/microsoft/bin)
 
 newpath+=($path)
 
