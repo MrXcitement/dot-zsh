@@ -20,7 +20,7 @@ antigen use oh-my-zsh
 antigen bundle command-not-found
 antigen bundle dotenv
 antigen bundle kubectl
-antigen bundle fasd
+[[ $(command -v fzf) ]] && antigen bundle fzf
 antigen bundle git
 antigen bundle ssh-agent
 antigen bundle tmux
