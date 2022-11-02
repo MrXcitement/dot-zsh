@@ -17,6 +17,7 @@ source "${ANTIGEN}"
 antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle asdf
 antigen bundle command-not-found
 antigen bundle dotenv
 antigen bundle kubectl
