@@ -6,7 +6,7 @@
 
 # Load the profile zsh scripts from ~/.zsh/profile
 SCRIPT_DIR="${${(%):-%x}:h}"
-ZSH_DIR=${SCRIPT_DIR}/.zsh/profile/
+ZSH_DIR=${SCRIPT_DIR}/.zprofile.d/
 
 [[ $DEBUG ]] && echo "Loading ${ZSH_DIR}"
 for f (${ZSH_DIR}/*.zsh) source $f

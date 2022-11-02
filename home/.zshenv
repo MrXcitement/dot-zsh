@@ -18,7 +18,7 @@ if [[ -d ${HOME}/.env ]]; then
 fi
 
 # Source environment files in the ~/.zsh/shenv directory
-ZSH_DIR=${SCRIPT_DIR}/.zsh/shenv/
+ZSH_DIR=${SCRIPT_DIR}/.zshenv.d/
 [[ $DEBUG ]] && echo "Loading ${ZSH_DIR}"
 for f (${ZSH_DIR}/*.zsh) source $f
 
