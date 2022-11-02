@@ -7,7 +7,7 @@
 # Load all files in the ~/.zsh/rc folder
 
 SCRIPT_DIR="${${(%):-%x}:h}"
-ZSH_DIR=${SCRIPT_DIR}/.zsh/shrc/
+ZSH_DIR=${SCRIPT_DIR}/.zshrc.d/
 
 [[ $DEBUG ]] && echo "Loading ${ZSH_DIR}"
 for f (${ZSH_DIR}/*.zsh) source $f
