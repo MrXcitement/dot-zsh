@@ -64,3 +64,8 @@ if [[ -d ${HOME}/.pyenv ]]; then
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init --path)"
 fi
+
+# Configure rbenv environment
+if [[ $(command -v rbenv) ]]; then
+    eval "$(rbenv init -)"
+fi
