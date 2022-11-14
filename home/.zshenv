@@ -12,35 +12,13 @@ if [[ -d ${HOME}/.env ]]; then
     done
 fi
 
-# Configure the path
-
 # If on macos, use path_helper to seed the path
-if [ -x /usr/libexec/path_helper ]; then
-	eval `/usr/libexec/path_helper -s`
-    # I modified /etc/zprofile to not eval the path_helper if
-    # NO_PATH_HELPER exists.
-    # This keeps the path from getting clobbered by path_helper.
-    NO_PATH_HELPER=1
+PATH_HELPER=/usr/libexec/path_helper
+if [[ -x  $PATH_HELPER ]]; then
+    unset PATH
+    eval $($PATH_HELPER -s)
 fi
-
-
-# Add before existing path
-newpath+=(
-~/bin
-~/.local/bin
-~/.dotnet/tools
-/opt/microsoft/bin)
-
-# Add existing path
-newpath+=($path)
-
-# Add after existing path
-newpath+=(/usr/local/sbin)
-
-# Compose the path from the newpath array,
-# only existing paths will be added to the new path.
-path=($^newpath(N))
-
+unset PATH_HELPER
 
 # Configure homebrew environment
 BREW=""
@@ -69,3 +47,31 @@ fi
 if [[ $(command -v rbenv) ]]; then
     eval "$(rbenv init -)"
 fi
+
+## Configure the path
+# Feel free to add system specific paths here
+# since any path that does not exist on the
+# current system will not be added to the
+# system path.
+ 
+# Add paths before the existing system path
+newpath=(
+~/bin
+~/.local/bin
+~/.dotnet/tools
+/opt/microsoft/bin)
+
+# Add existing system paths to the newpath
+newpath+=($path)
+
+# Add paths to the newpath
+newpath+=(/usr/local/sbin)
+
+# Replace the system path using the newpath array,
+# only existing paths will be added to the new path.
+path=($^newpath(N))
+
+# Remove duplicate entries from the system path
+typeset -U path
+unset newpath
+

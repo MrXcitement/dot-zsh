@@ -12,4 +12,12 @@ $ ./install
 ```
 
 ## Configuration
-I am using the ['antigen'](http://antigen.sharats.me/) zsh plugin manager to configure and manage my zsh configuration.
+I use ['oh-my-zsh'](https://ohmyz.sh/) to manage my zsh configuration.
+Oh My Zsh is an open source, community-driven framework for managing your Zsh configuration..
+
+## Notes
+
+### Path issues
+On macOS, if you set the path in the *recommended* file `~/.zshenv` the system will overwrite it when it runs `/etc/zprofile` later in the startup.
+My solution is to source the `~/.zshenv` file in `~/.zprofile` if running on macOS aka 'Darwin'.
+
