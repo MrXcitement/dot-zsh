@@ -51,8 +51,8 @@ fi
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# If starship is installed, use it
-if [[ $(command -v starship) ]]; then
+# If starship is installed and not running in xterm, use it
+if [[ $(command -v starship) ]] && [[ $TERM != xterm ]]; then
     # Starship Cross Platform Prompt
     # The minimal, blazing-fast, and infinitely customizable prompt for any shell!
     # https://starship.rs/
