@@ -123,6 +123,7 @@ zstyle ':omz:update' frequency 7
 plugins=(
     command-not-found
     dotenv
+    emacs
     kubectl
     fzf
     git
@@ -176,4 +177,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
