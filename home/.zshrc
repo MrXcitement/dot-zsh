@@ -51,19 +51,22 @@ fi
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# If starship is installed and not running in xterm, use it
-if [[ $(command -v starship) ]] && [[ $TERM != xterm ]]; then
-    # Starship Cross Platform Prompt
-    # The minimal, blazing-fast, and infinitely customizable prompt for any shell!
-    # https://starship.rs/
-    # The ~/.config/starship.toml file is used to configure the prompt.
-    eval "$(starship init zsh)"
-else
-    # Spaceship theme
-    # https://denysdovhan.com/spaceship-prompt/
-    ZSH_THEME="spaceship"
-    # Disable kubecontext
-    export SPACESHIP_KUBECTL_CONTEXT_SHOW='false'
+# Only setup a prompt if the term is not dumb (emacs shell)
+if [[ $TERM != dumb ]]; then
+    # If starship is installed and not running in xterm, use it
+    if [[ $(command -v starship) ]] && [[ $TERM != xterm ]]; then
+	# Starship Cross Platform Prompt
+	# The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+	# https://starship.rs/
+	# The ~/.config/starship.toml file is used to configure the prompt.
+	eval "$(starship init zsh)"
+    else
+	# Spaceship theme
+	# https://denysdovhan.com/spaceship-prompt/
+	ZSH_THEME="spaceship"
+	# Disable kubecontext
+	export SPACESHIP_KUBECTL_CONTEXT_SHOW='false'
+    fi
 fi
 
 # Uncomment the following line to use case-sensitive completion.
