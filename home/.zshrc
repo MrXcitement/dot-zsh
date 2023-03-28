@@ -130,8 +130,8 @@ plugins=(
     kubectl
     fzf
     git
-    ssh-agent
     tmux
+    zoxide
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-vscode
