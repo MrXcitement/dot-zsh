@@ -39,6 +39,13 @@ if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-vscode" ]]; then
     git clone https://github.com/qianxinfeng/zsh-vscode ${ZSH_CUSTOM}/plugins/zsh-vscode
 fi
 
+# Clone qianxinfeng/zsh-vscode
+if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-bat" ]]; then
+    git clone https://github.com/mrxcitement/zsh-bat ${ZSH_CUSTOM}/plugins/zsh-bat
+fi
+BAT_THEME_DARK=GitHub_Dark
+BAT_THEME_LIGHT=GitHub_Light
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -135,6 +142,7 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-vscode
+    zsh-bat
     )
 
 # Configure homebrew completions
