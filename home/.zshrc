@@ -39,12 +39,12 @@ if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-vscode" ]]; then
     git clone https://github.com/qianxinfeng/zsh-vscode ${ZSH_CUSTOM}/plugins/zsh-vscode
 fi
 
-# Clone qianxinfeng/zsh-vscode
+# Clone mrxcitement/zsh-bat
 if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-bat" ]]; then
     git clone https://github.com/mrxcitement/zsh-bat ${ZSH_CUSTOM}/plugins/zsh-bat
 fi
-BAT_THEME_DARK=GitHub_Dark
-BAT_THEME_LIGHT=GitHub_Light
+export BAT_THEME_DARK=OneHalfDark
+export BAT_THEME_LIGHT=OneHalfLight
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
