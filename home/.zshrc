@@ -188,3 +188,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+##
+# 1Password cli `op` third party plugins configuration
+OP_PLUGINS="${HOME}/.config/op/plugins.sh"
+if [[ -f "${OP_PLUGINS}" ]]; then
+    source "${OP_PLUGINS}"
+fi
