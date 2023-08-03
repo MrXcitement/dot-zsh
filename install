@@ -4,6 +4,10 @@
 # Mike Barker <mike@thebarkers.com>
 # May 14th, 2013
 
+# History
+# 2023.09.02 MRB
+# - Fix install fails when run outside this repository.
+
 set -o errexit
 set -o nounset
 set -o pipefail
@@ -40,16 +44,23 @@ link_file() {
     fi
 }
 
+# link_glob(glob, link_dir)
+# glob....: The full path to a location of file(s) and/or folders to link into the link_dir.
+# link_dir: The location that the link(s) are created in.
 link_glob() {
     local glob="${1}"
     local link_dir="${2}"
+    local filename
+    local link
+    local target
     local target_dir
 
-    target_dir="$(cd "$(dirname "$0")" && pwd)"
+    target_dir=$(dirname "$glob")
 
     for item in ${glob}; do
-        link="${link_dir}/${item}"
-        target="${target_dir}/${item}"
+        filename=$(basename "$item")
+        link="${link_dir}/${filename}"
+        target="${target_dir}/${filename}"
         backup_file "${link}"
         link_file "$target" "$link"
     done
@@ -57,6 +68,6 @@ link_glob() {
 
 # Backup existing files and link files/dirs in the home folder into
 # the users home directory.
-pushd ./home > /dev/null
-link_glob ".z*" "${HOME}"
-popd > /dev/null
+install_dir="$(cd "$(dirname "$0")" && pwd)"
+link_glob "${install_dir}/home/.z*" "${HOME}"
+
