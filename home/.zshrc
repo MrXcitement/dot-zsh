@@ -131,10 +131,9 @@ zstyle ':omz:update' frequency 7
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+    asdf
     command-not-found
     dotenv
-    emacs
-    kubectl
     fzf
     git
     tmux
@@ -144,20 +143,6 @@ plugins=(
     zsh-vscode
     zsh-bat
     )
-
-# Configure homebrew completions
-# https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
-if [[ $(command -v brew) ]]; then
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-    autoload -Uz compinit
-    compinit
-fi
-
-# Configure zoxide shell support
-# https://github.com/ajeetdsouza/zoxide
-if [[ $(command -v zoxide) ]]; then
-    eval "$(zoxide init zsh)"
-fi
 
 # Initialize oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -188,6 +173,22 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+##
+# Configure homebrew completions
+# https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+if [[ $(command -v brew) ]]; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    autoload -Uz compinit
+    compinit
+fi
+
+##
+# Configure zoxide shell support
+# https://github.com/ajeetdsouza/zoxide
+if [[ $(command -v zoxide) ]]; then
+    eval "$(zoxide init zsh)"
+fi
 
 ##
 # 1Password cli `op` third party plugins configuration
