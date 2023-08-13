@@ -26,7 +26,7 @@ fi
 # Clone zsh-users/zsh-completions
 if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-completions" ]]; then
     git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM}/plugins/zsh-completions
-    FPATH+=${ZSH_CUSTOM}/plugins/zsh-completions/src
+    fpath+="${ZSH_CUSTOM}/custom}/plugins/zsh-completions/src"
 fi
 
 # Clone zsh-users/zsh-syntax-highlighting
@@ -62,17 +62,17 @@ export BAT_THEME_LIGHT=OneHalfLight
 if [[ $TERM != dumb ]]; then
     # If starship is installed and not running in xterm, use it
     if [[ $(command -v starship) ]] && [[ $TERM != xterm ]]; then
-	# Starship Cross Platform Prompt
-	# The minimal, blazing-fast, and infinitely customizable prompt for any shell!
-	# https://starship.rs/
-	# The ~/.config/starship.toml file is used to configure the prompt.
-	eval "$(starship init zsh)"
+        # Starship Cross Platform Prompt
+        # The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+        # https://starship.rs/
+        # The ~/.config/starship.toml file is used to configure the prompt.
+        eval "$(starship init zsh)"
     else
-	# Spaceship theme
-	# https://denysdovhan.com/spaceship-prompt/
-	ZSH_THEME="spaceship"
-	# Disable kubecontext
-	export SPACESHIP_KUBECTL_CONTEXT_SHOW='false'
+        # Spaceship theme
+        # https://denysdovhan.com/spaceship-prompt/
+        ZSH_THEME="spaceship"
+        # Disable kubecontext
+        export SPACESHIP_KUBECTL_CONTEXT_SHOW='false'
     fi
 fi
 
@@ -131,7 +131,6 @@ zstyle ':omz:update' frequency 7
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    asdf
     command-not-found
     dotenv
     fzf
