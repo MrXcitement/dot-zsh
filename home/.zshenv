@@ -29,7 +29,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]] then
     test -d "$HOME/.linuxbrew" && BREW="$HOME/.linuxbrew/bin/brew"
     test -d "/home/linuxbrew/.linuxbrew" && BREW="/home/linuxbrew/.linuxbrew/bin/brew"
 fi
-    
+
 # Use brew command to set shell environment
 if [[ "$BREW" != "" ]]; then
     eval "$($BREW shellenv)"
@@ -53,25 +53,22 @@ fi
 # since any path that does not exist on the
 # current system will not be added to the
 # system path.
- 
-# Add paths before the existing system path
+
+# Add paths before existing paths
 newpath=(
 ~/bin
 ~/.local/bin
 ~/.dotnet/tools
-/opt/microsoft/bin)
-
-# Add existing system paths to the newpath
-newpath+=($path)
-
-# Add paths to the newpath
-newpath+=(/usr/local/sbin)
+/opt/microsoft/bin
+# Add existing paths
+$path
+# Add paths after existing path
+/usr/local/sbin)
 
 # Replace the system path using the newpath array,
 # only existing paths will be added to the new path.
 path=($^newpath(N))
+unset newpath
 
 # Remove duplicate entries from the system path
 typeset -U path
-unset newpath
-
