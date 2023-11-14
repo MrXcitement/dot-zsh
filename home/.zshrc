@@ -43,8 +43,26 @@ fi
 if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-bat" ]]; then
     git clone https://github.com/mrxcitement/zsh-bat ${ZSH_CUSTOM}/plugins/zsh-bat
 fi
-export BAT_THEME_DARK=OneHalfDark
-export BAT_THEME_LIGHT=OneHalfLight
+
+# Custom themes for bat, installed in the bat configuration dir theme folder
+# Find more themes at: https://iterm2colorschemes.com/
+export BAT_THEME_DARK=GitHub_Dark
+export BAT_THEME_LIGHT=GitHub_Light
+
+# Check if the themes set above actualy exist on this machine
+HAS_BAT_THEMES=0
+if [[ -f $(bat --config-dir)/"themes/${BAT_THEME_DARK}.tmTheme" ]] ||
+   [[ -f $(bat --config-dir)/"themes/${BAT_THEME_LIGHT}.tmTheme" ]]; then
+   HAS_BAT_THEMES=1
+fi
+
+# If the term is 'dumb' or one or more of the bat themes do not exist
+if [[ "$TERM" == "dumb" ]] || (( ! $HAS_BAT_THEMES )); then
+    # BAT_THEME will override any BAT_THEME_DARK or BAT_THEME_LIGHT setting
+    export BAT_THEME=ansi
+    unset BAT_THEME_DARK
+    unset BAT_THEME_LIGHT
+fi
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
