@@ -1,4 +1,4 @@
-#!/bin/zsh
+ #!/bin/zsh
 # .zshrc --- Configure zsh interactive shells
 # Mike Barker <mike@thebarkers.com>
 # November 3rd, 2022
@@ -153,6 +153,7 @@ plugins=(
     dotenv
     fzf
     git
+    nvm
     tmux
     zoxide
     zsh-autosuggestions
@@ -213,3 +214,7 @@ OP_PLUGINS="${HOME}/.config/op/plugins.sh"
 if [[ -f "${OP_PLUGINS}" ]]; then
     source "${OP_PLUGINS}"
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
