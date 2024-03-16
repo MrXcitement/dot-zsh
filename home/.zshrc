@@ -150,6 +150,7 @@ zstyle ':omz:update' frequency 7
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     command-not-found
+    direnv
     dotenv
     fzf
     git
